@@ -10,7 +10,23 @@ server/   API REST (Node.js + Express + SQLite vía node:sqlite, JWT, bcrypt)
 client/   Frontend (React + Vite + React Router)
 ```
 
+## Requisitos
+
+- **Node.js 22.13 o superior** (recomendado: la LTS más reciente, o Node 24/26).
+  El backend usa el módulo nativo `node:sqlite`, que no existe en versiones
+  anteriores a 22.5, y que hasta la 22.13/23.4 requiere el flag
+  `--experimental-sqlite`. Con Node 22.13+ funciona sin flags (puede mostrar un
+  aviso de "experimental" hasta Node 26, donde ya es estable). Verificá tu
+  versión con `node --version`; para actualizar, [nodejs.org](https://nodejs.org)
+  o `nvm install --lts`.
+- **Git** para clonar el repositorio.
+- No hace falta instalar SQLite aparte (viene incluido en Node) ni ninguna base
+  de datos externa.
+
 ## Cómo correrlo
+
+Después de clonar el repo, hay que instalar dependencias e iniciar **dos procesos
+en paralelo** (dos terminales), uno por carpeta:
 
 Backend (puerto 4000; crea y siembra la base de datos SQLite en `server/data/` la
 primera vez que se ejecuta):
@@ -30,6 +46,14 @@ npm run dev
 ```
 
 Abrir http://localhost:5173
+
+> **Importante:** `server/data/` (la base SQLite y el CSV de credenciales) está en
+> `.gitignore` y no se sube al repo. Cada persona que clona el proyecto genera su
+> propia base local al arrancar el backend por primera vez, con las mismas
+> universidades y Responsables Institucionales de ejemplo, pero **sin compartir
+> datos entre computadoras** — no es una base de datos en la nube. Si querés que
+> varias personas vean la misma información en tiempo real, el backend habría que
+> desplegarlo en un servidor accesible por todas (fuera del alcance de este MVP).
 
 ## Usuarios precargados
 
