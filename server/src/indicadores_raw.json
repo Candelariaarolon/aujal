@@ -1,0 +1,578 @@
+[
+  {
+    "sheet": "D1-Contexto",
+    "titulo": "Dimensión 0 — Contexto de la institución (xx indicadores)",
+    "indicadores": [
+      {
+        "codigo": "D01",
+        "nombre": "Número de campus / sedes",
+        "descripcion": "Cantidad de campus activos.",
+        "formula": "Conteo directo",
+        "unidad": "N° de campus",
+        "fuentes": "Organigrama, documentos oficiales, página web",
+        "es_ausjal": false
+      },
+      {
+        "codigo": "D02",
+        "nombre": "Nombre del campus reportado",
+        "descripcion": "Denominación oficial del campus al que refiere este reporte. ",
+        "formula": "Identificación textual",
+        "unidad": "Texto",
+        "fuentes": "Documentos institucionales, registros oficiales",
+        "es_ausjal": false
+      },
+      {
+        "codigo": "D03",
+        "nombre": "Población universitaria total",
+        "descripcion": "Suma de estudiantes + docentes TC +  investigadores + administrativos + personal de servicio. Semestre de mayor matrícula. Sin doble conteo.",
+        "formula": "∑ (estudiantes + docentes + administrativos + servicio)",
+        "unidad": "Personas",
+        "fuentes": "RRHH, nómina, control escolar, matrícula oficial",
+        "es_ausjal": false
+      },
+      {
+        "codigo": "D04",
+        "nombre": "Clima de la región",
+        "descripcion": "Tipo climático de la región según clasificación estándar (Koppen?) darle link (https://www.gloh2o.org/koppen/)",
+        "formula": "Seleccionar: 1.Tropical húmedo / 2.Tropical húm. y seco / 3.Semiárido / 4.Árido / 5.Mediterráneo / 6.Subtropical húm. / 7.Oceánico / 8.Continental húm. / 9.Subártico",
+        "unidad": "Tipo",
+        "fuentes": "Servicio meteorológico nacional, atlas climáticos",
+        "es_ausjal": false
+      },
+      {
+        "codigo": "D05",
+        "nombre": "Antigüedad del campus",
+        "descripcion": "Años desde la fundación o inauguración oficial del campus.",
+        "formula": "Año del reporte − Año de fundación",
+        "unidad": "Años",
+        "fuentes": "Acta de fundación, decreto de creación, archivos históricos",
+        "es_ausjal": false
+      },
+      {
+        "codigo": "D06",
+        "nombre": "Proporción de superficie construida",
+        "descripcion": "Porcentaje del campus con superficie techada/edificada respecto al área total.",
+        "formula": "Sup. construida (m²) / Sup. total campus (m²) × 100",
+        "unidad": "%",
+        "fuentes": "Planos, catastro, SIG, área de infraestructura",
+        "es_ausjal": false
+      }
+    ]
+  },
+  {
+    "sheet": "D1-Infraestructura y Entorno",
+    "titulo": "Dimensión 1 — Infraestructura  y Entorno  (SI)   (xx indicadores)",
+    "indicadores": [
+      {
+        "codigo": "SI1",
+        "nombre": "Relación entre el área de espacios abiertos y el área total",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": "Planos, SIG, fotografía aérea, catastro, infraestructura",
+        "es_ausjal": false
+      },
+      {
+        "codigo": "SI2",
+        "nombre": "Área total de espacios abiertos dividida por la población total del campus",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": "Certificados LEED/BREEAM/HQE, expedientes de obra, infraestructura",
+        "es_ausjal": false
+      },
+      {
+        "codigo": "SI3",
+        "nombre": "Instalaciones del campus para personas con discapacidad, necesidades especiales y/o maternidad",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": "Planos, fotografía, área de infraestructura y sostenibilidad",
+        "es_ausjal": false
+      },
+      {
+        "codigo": "SI4",
+        "nombre": "Instalaciones de seguridad y protección",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": "Recorrido de campo, área de infraestructura, auditorías",
+        "es_ausjal": false
+      },
+      {
+        "codigo": "SI1-AUSJAL",
+        "nombre": "Proporción de vegetación por área de campus ",
+        "descripcion": "Porcentaje del campus cubierto por vegetación.",
+        "formula": "Sup. con vegetación (m²) / Sup. total campus (m²) × 100",
+        "unidad": "%",
+        "fuentes": "Planos, SIG, fotografía aérea, catastro, infraestructura",
+        "es_ausjal": true
+      },
+      {
+        "codigo": "SI2-AUSJAL",
+        "nombre": "Área verde per cápita",
+        "descripcion": "Metros cuadrados de vegetación por persona de la comunidad universitaria.",
+        "formula": "Sup. con vegetación (m²) / Población total del campus",
+        "unidad": "m²/persona",
+        "fuentes": "Planos del campus, SIG, registros de población",
+        "es_ausjal": true
+      }
+    ]
+  },
+  {
+    "sheet": "D2-Energía y Cámbio Climático",
+    "titulo": "Dimensión 4 — Eficiencia energética y cambio climático (7 indicadores)",
+    "indicadores": [
+      {
+        "codigo": "EC1",
+        "nombre": "Uso de equipos energéticamente eficientes",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": false
+      },
+      {
+        "codigo": "EC2",
+        "nombre": "Consumo total de electricidad dividido por la población del campus (kWh por persona)",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": false
+      },
+      {
+        "codigo": "EC3",
+        "nombre": "Relación entre producción de energía renovable y consumo anual total de energía",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": false
+      },
+      {
+        "codigo": "EC1-AUSJAL",
+        "nombre": "Consumo de electricidad per cápita ",
+        "descripcion": "Energía eléctrica consumida por persona por año.",
+        "formula": "Consumo anual de energía eléctrica (kWh) / Población total",
+        "unidad": "kWh/persona/año",
+        "fuentes": "Facturas de electricidad, medidores, área de infraestructura",
+        "es_ausjal": true
+      },
+      {
+        "codigo": "EC2-AUSJAL",
+        "nombre": "Programa de reducción de GEI",
+        "descripcion": "Plan formal para cuantificar y reducir emisiones de gases de efecto invernadero -un indicador sería medir y otro indicador sería acciones de mitigación- (tener programa y ejecutar programa)",
+        "formula": "Existe / No existe. Indicar metas, alcances y acciones.",
+        "unidad": "Existe/No",
+        "fuentes": "Documento del programa, inventario de emisiones, informes",
+        "es_ausjal": true
+      }
+    ]
+  },
+  {
+    "sheet": "D3-Residuos",
+    "titulo": "Dimensión 5 — Gestión de los residuos",
+    "indicadores": [
+      {
+        "codigo": "WS1",
+        "nombre": "Programa 3R (Reducir, Reutilizar, Reciclar) para residuos universitarios",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": false
+      },
+      {
+        "codigo": "WS2",
+        "nombre": "Tratamiento de residuos orgánicos",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": false
+      },
+      {
+        "codigo": "WS3",
+        "nombre": "Tratamiento de residuos inorgánicos",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": false
+      },
+      {
+        "codigo": "WS4",
+        "nombre": "Tratamiento de residuos tóxicos",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": false
+      },
+      {
+        "codigo": "WS1-AUSJAL",
+        "nombre": "Programa / Plan de manejo de residuos",
+        "descripcion": "Plan formal para gestión integral de residuos en el campus.",
+        "formula": "Existe / No existe. Describir tipos cubiertos y cobertura (% campus).",
+        "unidad": "Existe/No",
+        "fuentes": "Documento del plan, manifiestos, contratos con gestores",
+        "es_ausjal": true
+      },
+      {
+        "codigo": "WS2-AUSJAL",
+        "nombre": "Generación de residuos per cápita",
+        "descripcion": "Kilogramos de residuos sólidos generados por persona por año.",
+        "formula": "Total residuos generados (kg/año) / Población total del campus",
+        "unidad": "kg/persona/año",
+        "fuentes": "Registros de pesaje, manifiestos de recolección, empresa de limpieza",
+        "es_ausjal": true
+      }
+    ]
+  },
+  {
+    "sheet": "D4-Agua",
+    "titulo": "Dimensión 4 — Usos del agua",
+    "indicadores": [
+      {
+        "codigo": "WR1",
+        "nombre": "Área total para absorción de agua (excluyendo áreas forestales y vegetación plantada)",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": false
+      },
+      {
+        "codigo": "WR2",
+        "nombre": "Programa de conservación del agua e implementación",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": false
+      },
+      {
+        "codigo": "WR1-AUSJAL",
+        "nombre": "Consumo de agua potable per cápita",
+        "descripcion": "Volumen de agua potable consumida por persona por año.",
+        "formula": "Consumo de agua potable/año (m³) / Población total del campus",
+        "unidad": "m³/persona/año",
+        "fuentes": "Facturas de agua, medidores, área de infraestructura",
+        "es_ausjal": true
+      },
+      {
+        "codigo": "WR2-AUSJAL",
+        "nombre": "Programa / Plan de ahorro de agua",
+        "descripcion": "Programa con acciones para reducir el consumo de agua potable.",
+        "formula": "Existe / No existe. Describir acciones y metas de reducción.",
+        "unidad": "Existe/No",
+        "fuentes": "Documento del programa, registros históricos de consumo",
+        "es_ausjal": true
+      },
+      {
+        "codigo": "WR3-AUSJAL",
+        "nombre": "Sistemas de captación de agua de lluvia",
+        "descripcion": "Infraestructura para recolectar y aprovechar agua pluvial.",
+        "formula": "Existe / No existe. Si existe: capacidad total (m³) y volumen aprovechado/año.",
+        "unidad": "Existe/No / m³",
+        "fuentes": "Planos, fichas técnicas, registros de captación, infraestructura",
+        "es_ausjal": true
+      }
+    ]
+  },
+  {
+    "sheet": "D5-Transporte",
+    "titulo": "Dimensión 5 — Transporte y movilidad (xx indicadores)",
+    "indicadores": [
+      {
+        "codigo": "TR1",
+        "nombre": "Número de vehículos de combustión (autos y motos) dividido por la población del campus",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": false
+      },
+      {
+        "codigo": "TR2",
+        "nombre": "Relación entre área de estacionamiento y área total del campus",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": false
+      },
+      {
+        "codigo": "TR1-AUSJAL",
+        "nombre": "Programa de movilidad sostenible",
+        "descripcion": "Plan o iniciativas para reducir vehículos privados y promover alternativas.",
+        "formula": "Existe / No existe. Describir iniciativas y usuarios beneficiados.",
+        "unidad": "Existe/No",
+        "fuentes": "Documento del programa, registros de usuarios, contratos",
+        "es_ausjal": true
+      }
+    ]
+  },
+  {
+    "sheet": "D6-Educación e Investigación",
+    "titulo": "Dimensión 8 — Educación e investigación",
+    "indicadores": [
+      {
+        "codigo": "ED1",
+        "nombre": "Relación entre cursos de sostenibilidad y total de cursos",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": false
+      },
+      {
+        "codigo": "ED2",
+        "nombre": "Relación entre financiamiento de investigación en sostenibilidad y financiamiento total de investigación",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": false
+      },
+      {
+        "codigo": "ED3",
+        "nombre": "Número de eventos o programas relacionados con sostenibilidad",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": false
+      },
+      {
+        "codigo": "ED4",
+        "nombre": "Número de servicios comunitarios relacionados con sostenibilidad que involucren estudiantes",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": false
+      },
+      {
+        "codigo": "ED1-AUSJAL",
+        "nombre": "Proporción de cursos de sostenibilidad",
+        "descripcion": "N° de publicaciones (indexadas + libros + divulgación) sobre sostenibilidad producidas por miembros de la institución en un año.",
+        "formula": "Conteo anual de publicaciones con tema principal de sostenibilidad o afines.",
+        "unidad": "N° publicaciones",
+        "fuentes": "Base de datos institucional, Scopus, WoS, Google Scholar, área de investigación",
+        "es_ausjal": true
+      },
+      {
+        "codigo": "ED2-AUSJAL",
+        "nombre": "Eventos relacionados con sostenibilidad",
+        "descripcion": "Grupos, colectivos, clubes estudiantiles con enfoque ambiental reconocidos por la institución.",
+        "formula": "Existe / No existe. Si existe: N° organizaciones, nombre y N° de integrantes.",
+        "unidad": "Existe/No",
+        "fuentes": "Registro de organizaciones, vida estudiantil, actas de reconocimiento",
+        "es_ausjal": true
+      },
+      {
+        "codigo": "ED3-AUSJAL",
+        "nombre": "Proyectos/Líneas de investigación en sostenibilidad",
+        "descripcion": "N° de proyectos de extensión que contribuyen a la sostenibilidad de comunidades externas.",
+        "formula": "Conteo de proyectos registrados en el año. Describir brevemente cada uno.",
+        "unidad": "N° proyectos",
+        "fuentes": "Registros de extensión, reportes RSU, vicerrectoría de vinculación",
+        "es_ausjal": true
+      },
+      {
+        "codigo": "ED4-AUSJAL",
+        "nombre": "Proyectos sociales/comunitarios de sostenibilidad",
+        "descripcion": "Programas de capacitación en sostenibilidad para personal docente y administrativo.",
+        "formula": "Existe / No existe. Si existe: N° cursos, N° personas formadas y horas promedio.",
+        "unidad": "Existe/No",
+        "fuentes": "Registros de RRHH o formación continua, certificados, área de sostenibilidad",
+        "es_ausjal": true
+      }
+    ]
+  },
+  {
+    "sheet": "D7-Gobernanza y Digitalización",
+    "titulo": "Dimensión 7 — Gobernanza y Digitalización (9 indicadores)",
+    "indicadores": [
+      {
+        "codigo": "GD1",
+        "nombre": "Porcentaje del presupuesto universitario destinado a sostenibilidad",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": false
+      },
+      {
+        "codigo": "GD2",
+        "nombre": "Informe de sostenibilidad",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": false
+      },
+      {
+        "codigo": "GD3",
+        "nombre": "Existencia de una unidad/oficina que coordine la sostenibilidad en el campus",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": false
+      },
+      {
+        "codigo": "GD4",
+        "nombre": "Sistema anticorrupción e integridad",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": false
+      },
+      {
+        "codigo": "GD5",
+        "nombre": "Código de ética escrito para autoridades, docentes, personal administrativo y estudiantes",
+        "descripcion": null,
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": false
+      },
+      {
+        "codigo": "GD1-AUSJAL",
+        "nombre": "Sustentabilidad en el Plan Estratégico",
+        "descripcion": "Compromisos explícitos con sostenibilidad en el PEI o PDI vigente.",
+        "formula": "Existe / No existe. Describir ejes y objetivos relacionados.",
+        "unidad": "Existe/No",
+        "fuentes": "PEI o PDI oficial, actas de aprobación, página web",
+        "es_ausjal": true
+      },
+      {
+        "codigo": "GD2-AUSJAL",
+        "nombre": "Políticas de sostenibilidad",
+        "descripcion": "Documentos normativos sobre sostenibilidad general, construcción verde, compras sustentables y plásticos.",
+        "formula": "N° de políticas aprobadas y vigentes. Para cada una: Existe / No existe.",
+        "unidad": "N° políticas",
+        "fuentes": "Gacetas universitarias, resoluciones, secretaría general",
+        "es_ausjal": true
+      },
+      {
+        "codigo": "GD3-AUSJAL",
+        "nombre": "Plan estratégico / Programa de sostenibilidad",
+        "descripcion": "Documento con metas, acciones y responsables para la sostenibilidad.",
+        "formula": "Existe / No existe. Describir nombre, vigencia, metas.",
+        "unidad": "Existe/No",
+        "fuentes": "Documento oficial del plan, área de sostenibilidad",
+        "es_ausjal": true
+      },
+      {
+        "codigo": "GD4-AUSJAL",
+        "nombre": "Área institucional de sostenibilidad",
+        "descripcion": "Unidad con personal y presupuesto propios para la agenda de sostenibilidad.",
+        "formula": "Existe / No existe. Indicar nombre, jerarquía y N° de personas.",
+        "unidad": "Existe/No",
+        "fuentes": "Organigrama, directorio de personal, presupuesto aprobado",
+        "es_ausjal": true
+      },
+      {
+        "codigo": "GD5-AUSJAL",
+        "nombre": "Presupuesto anual para sostenibilidad (USD)",
+        "descripcion": "Monto en USD asignado a esfuerzos de sostenibilidad.",
+        "formula": "Presupuesto sostenibilidad (USD) / Presupuesto total (USD) × 100",
+        "unidad": "USD / %",
+        "fuentes": "Presupuesto aprobado, reportes financieros, auditoría",
+        "es_ausjal": true
+      },
+      {
+        "codigo": "GD6-AUSJAL",
+        "nombre": "Participación en rankings/redes de sostenibilidad",
+        "descripcion": "Involucramiento en UI GreenMetric, STARS, AISHE, ARIUSA u otras redes.",
+        "formula": "Listado de rankings/redes, año de último reporte y posición/puntaje.",
+        "unidad": "N° rankings/redes",
+        "fuentes": "Reportes de participación, página web de rankings, RRII",
+        "es_ausjal": true
+      }
+    ]
+  },
+  {
+    "sheet": "D8-Espiritualidad Ignaciana",
+    "titulo": "Dimensión 8 — Espiritualidad Ignaciana (x indicadores)",
+    "indicadores": [
+      {
+        "codigo": "EI1 - AUSJAL",
+        "nombre": "Porcentaje de estudiantes, docentes y personal administrativo que participan anualmente en procesos de formación espiritual o ignaciana.",
+        "descripcion": "Número de participantes en retiros, talleres de espiritualidad, ejercicios ignacianos, acompañamiento espiritual y programas de formación en identidad universitaria.",
+        "formula": "% respecto al total de la comunidad universitaria.",
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": true
+      },
+      {
+        "codigo": "EI2 - AUSJAL",
+        "nombre": "Porcentaje de programas académicos que incorporan contenidos sobre ética, espiritualidad, justicia social, ecología integral o reflexión humanista.",
+        "descripcion": "Número de asignaturas o experiencias formativas con enfoque humanista-ignaciano.",
+        "formula": "Evidencia documental en planes de estudio.",
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": true
+      },
+      {
+        "codigo": "EI3 - AUSJAL",
+        "nombre": "Incorporación del discernimiento ignaciano en procesos de toma de decisiones.",
+        "descripcion": "Evidencia de metodologías participativas y de discernimiento en consejos, planeación estratégica y toma de decisiones institucionales.",
+        "formula": "Número de procesos documentados.",
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": true
+      },
+      {
+        "codigo": "EI4 - AUSJAL",
+        "nombre": "Participación estudiantil en programas de servicio social con componente de reflexión ética y espiritual.",
+        "descripcion": "Número de estudiantes participantes.",
+        "formula": "Horas de servicio con acompañamiento reflexivo.",
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": true
+      },
+      {
+        "codigo": "EI5 - AUSJAL",
+        "nombre": "Disponibilidad y uso de espacios físicos destinados al recogimiento y la contemplación.",
+        "descripcion": "Existencia de capillas, jardines de contemplación, salas de meditación o espacios ecuménicos.",
+        "formula": "Número de usuarios por periodo.",
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": true
+      },
+      {
+        "codigo": "EI6 - AUSJAL",
+        "nombre": "Número de proyectos de incidencia social que integran reflexión ética o espiritual.",
+        "descripcion": "Programas comunitarios con espacios reflexivos documentados.",
+        "formula": "Evidencias de aprendizaje-servicio.",
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": true
+      },
+      {
+        "codigo": "EI7 - AUSJAL",
+        "nombre": "Número de investigaciones, publicaciones o proyectos académicos sobre espiritualidad, ética, justicia social o ecología integral.",
+        "descripcion": "Artículos, tesis, seminarios o cuerpos académicos vinculados al tema.",
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": true
+      },
+      {
+        "codigo": "EI8 - AUSJAL",
+        "nombre": "Número de acciones formativas que promueven una relación espiritual con el medio ambiente.",
+        "descripcion": "Experiencias de contacto consciente con la naturaleza.",
+        "formula": null,
+        "unidad": null,
+        "fuentes": null,
+        "es_ausjal": true
+      }
+    ]
+  }
+]
