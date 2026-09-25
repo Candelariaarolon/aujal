@@ -22,3 +22,12 @@ export const UMBRALES_NUMERICOS = {
   'GD2-AUSJAL': { mejorSiMenor: false, verde: 4, amarillo: 2, naranja: 1 }, // N° políticas
   'GD6-AUSJAL': { mejorSiMenor: false, verde: 3, amarillo: 2, naranja: 1 }, // N° rankings/redes
 };
+
+// Umbral GENÉRICO por defecto, para cualquier indicador numérico que no tenga
+// una entrada propia arriba (por ejemplo, los indicadores "generales" del
+// Excel que todavía no tienen fórmula/unidad definida por AUSJAL). Asume que
+// "mayor es mejor" simplemente para que la plataforma muestre los 4 colores
+// mientras se define el criterio real — no representa ninguna lógica de
+// sustentabilidad específica. Ajustar o reemplazar por indicador en cuanto
+// haya datos reales.
+export const UMBRAL_GENERICO_POR_DEFECTO = { mejorSiMenor: false, verde: 75, amarillo: 50, naranja: 25 };
