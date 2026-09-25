@@ -3,11 +3,8 @@ import { useParams } from 'react-router-dom';
 import { apiFetch } from '../api.js';
 import { useAuth } from '../context/AuthContext.jsx';
 import EstadoBadge from '../components/EstadoBadge.jsx';
-import { ORDEN_ESTADOS, estadoInfo } from '../estados.js';
 
-const ESTADOS_SELECCIONABLES = ORDEN_ESTADOS;
-
-function DimensionAccordion({ dimension, esEditable, ediciones, onCambiarEdicion, abierta, onToggle }) {
+function DimensionAccordion({ dimension, esEditable, ediciones, onCambiarDato, abierta, onToggle }) {
   const conDatos = dimension.indicadores.filter(i => i.dato_registrado !== null).length;
 
   return (
@@ -32,9 +29,9 @@ function DimensionAccordion({ dimension, esEditable, ediciones, onCambiarEdicion
             </thead>
             <tbody>
               {dimension.indicadores.map(ind => {
-                const edicion = ediciones[ind.id];
-                const valorMostrado = esEditable ? (edicion?.dato_registrado ?? ind.dato_registrado ?? '') : ind.dato_registrado;
-                const estadoMostrado = esEditable ? (edicion?.estado ?? ind.estado) : ind.estado;
+                const valorEdicion = ediciones[ind.id];
+                const valorMostrado = esEditable ? (valorEdicion ?? ind.dato_registrado ?? '') : ind.dato_registrado;
+                const sinCriterio = ind.estado === 'sin_informacion' && !!ind.dato_registrado;
                 return (
                   <tr key={ind.id}>
                     <td className="col-codigo">
@@ -52,24 +49,16 @@ function DimensionAccordion({ dimension, esEditable, ediciones, onCambiarEdicion
                         <input
                           value={valorMostrado}
                           placeholder="Sin información"
-                          onChange={e => onCambiarEdicion(ind.id, { dato_registrado: e.target.value, estado: edicion?.estado ?? ind.estado })}
+                          onChange={e => onCambiarDato(ind.id, e.target.value)}
                         />
                       ) : (
                         ind.dato_registrado ? ind.dato_registrado : <span className="text-muted">Sin información</span>
                       )}
                     </td>
                     <td className="col-estado">
-                      {esEditable ? (
-                        <select
-                          value={estadoMostrado}
-                          onChange={e => onCambiarEdicion(ind.id, { dato_registrado: edicion?.dato_registrado ?? ind.dato_registrado ?? '', estado: e.target.value })}
-                        >
-                          {ESTADOS_SELECCIONABLES.map(e => (
-                            <option key={e} value={e}>{estadoInfo(e).emoji} {estadoInfo(e).label}</option>
-                          ))}
-                        </select>
-                      ) : (
-                        <EstadoBadge estado={ind.estado} size="sm" />
+                      <EstadoBadge estado={ind.estado} size="sm" />
+                      {sinCriterio && (
+                        <div className="ind-sin-criterio">Sin criterio de evaluación definido aún</div>
                       )}
                     </td>
                   </tr>
@@ -117,24 +106,23 @@ export default function PerfilUniversidadPage() {
 
   const puedeGestionar = perfil.es_mi_universidad && usuario.rol === 'responsable';
 
-  const onCambiarEdicion = (indicadorId, valores) => {
-    setEdiciones(prev => ({ ...prev, [indicadorId]: valores }));
+  const onCambiarDato = (indicadorId, valor) => {
+    setEdiciones(prev => ({ ...prev, [indicadorId]: valor }));
   };
 
   const guardarDimension = async (dimension) => {
     setGuardando(true);
     setMensaje('');
     try {
-      const cambios = dimension.indicadores.filter(ind => ediciones[ind.id]);
-      await Promise.all(cambios.map(ind => {
-        const { dato_registrado, estado } = ediciones[ind.id];
-        return apiFetch(`/indicadores/${ind.id}/valor`, {
+      const cambios = dimension.indicadores.filter(ind => ediciones[ind.id] !== undefined);
+      await Promise.all(cambios.map(ind => (
+        apiFetch(`/indicadores/${ind.id}/valor`, {
           method: 'PUT',
           token,
-          body: { dato_registrado: dato_registrado || null, estado },
-        });
-      }));
-      setMensaje(`Información de "${dimension.nombre}" guardada.`);
+          body: { dato_registrado: ediciones[ind.id] || null },
+        })
+      )));
+      setMensaje(`Información de "${dimension.nombre}" guardada. El estado se calculó automáticamente a partir del dato.`);
       cargar();
     } catch (e) {
       setError(e.message);
@@ -165,6 +153,13 @@ export default function PerfilUniversidadPage() {
       </div>
 
       {mensaje && <div className="alert alert-success">{mensaje}</div>}
+      {editando && (
+        <div className="alert alert-info">
+          El color del semáforo se calcula automáticamente a partir del dato que cargues — no se elige manualmente.
+          Algunos indicadores todavía no tienen un criterio de evaluación definido por AUSJAL: en esos casos el dato
+          queda registrado, pero el estado se muestra como "Sin información" hasta que se defina el criterio.
+        </div>
+      )}
 
       <div className="accordion">
         {perfil.dimensiones.map(dim => (
@@ -173,7 +168,7 @@ export default function PerfilUniversidadPage() {
               dimension={dim}
               esEditable={editando}
               ediciones={ediciones}
-              onCambiarEdicion={onCambiarEdicion}
+              onCambiarDato={onCambiarDato}
               abierta={dimensionAbierta === dim.id}
               onToggle={() => setDimensionAbierta(a => a === dim.id ? null : dim.id)}
             />

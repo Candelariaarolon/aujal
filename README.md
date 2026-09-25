@@ -99,11 +99,20 @@ las valide:
    adelante implica sumar una columna `periodo` y dejar de usar `UNIQUE(universidad_id, indicador_id)`
    como clave, sin rehacer el resto del modelo.
 
-2. **Criterios de color:** como todavía no existen fórmulas/rangos por indicador,
-   el color (🟢🟡🟠🔴⚪) se define **manualmente** por el Responsable Institucional
-   al cargar cada dato (no se inventó ningún umbral). Cuando AUSJAL defina las
-   fórmulas reales, ese select se puede reemplazar por un cálculo automático en
-   `server/src/routes/indicadores.js` sin tocar el resto de la app.
+2. **Criterios de color:** el estado (🟢🟡🟠🔴⚪) **se calcula automáticamente en el
+   servidor** a partir del dato cargado — el Responsable Institucional no elige el
+   color manualmente. La lógica vive en `server/src/reglas_estado.js`:
+   - Indicadores tipo "Existe/No": Existe → verde, No existe → rojo.
+   - Indicadores numéricos con umbral configurado en `server/src/umbrales.js`
+     (una decena, con dirección "mejor si menor/mayor" y cortes ilustrativos,
+     claramente marcados como **provisorios** hasta que AUSJAL valide los reales).
+   - Cualquier otro indicador (sin fórmula/unidad definida en el Excel de AUSJAL)
+     queda siempre en "Sin información", aunque tenga un dato cargado: no se
+     inventa ningún criterio para ellos todavía.
+
+   Para actualizar los umbrales cuando AUSJAL defina los reales, alcanza con
+   editar `server/src/umbrales.js` y correr `node src/recalcular.js` una vez
+   para reclasificar los datos ya cargados sin perderlos.
 
 ## Nota sobre las universidades precargadas
 

@@ -1,10 +1,9 @@
 import { Router } from 'express';
 import { db } from '../db.js';
 import { requireAuth, requireRole } from '../auth.js';
+import { calcularEstado } from '../reglas_estado.js';
 
 const router = Router();
-
-const ESTADOS_VALIDOS = ['verde', 'amarillo', 'naranja', 'rojo', 'sin_informacion'];
 
 // Pantalla 7 — Comparar indicadores: agrupa universidades por estado para un indicador puntual.
 router.get('/:id/comparacion', requireAuth, (req, res) => {
@@ -38,19 +37,18 @@ router.get('/:id/comparacion', requireAuth, (req, res) => {
   });
 });
 
-// Pantalla 6 — Gestionar indicadores: guardar dato + estado de un indicador para la propia universidad.
+// Pantalla 6 — Gestionar indicadores: guardar el dato de un indicador para la
+// propia universidad. El estado (semáforo) NO lo elige el Responsable: se
+// calcula automáticamente a partir del dato, según las reglas de
+// reglas_estado.js.
 router.put('/:id/valor', requireAuth, requireRole('responsable'), (req, res) => {
-  const indicador = db.prepare('SELECT id FROM indicadores WHERE id = ?').get(req.params.id);
+  const indicador = db.prepare('SELECT id, codigo, unidad FROM indicadores WHERE id = ?').get(req.params.id);
   if (!indicador) return res.status(404).json({ error: 'Indicador no encontrado.' });
 
-  let { dato_registrado, estado } = req.body || {};
-  if (estado && !ESTADOS_VALIDOS.includes(estado)) {
-    return res.status(400).json({ error: 'Estado inválido.' });
-  }
-  if (dato_registrado === undefined) dato_registrado = null;
-  if (dato_registrado === '' ) dato_registrado = null;
-  if (!estado) estado = dato_registrado ? 'sin_informacion' : 'sin_informacion';
+  let { dato_registrado } = req.body || {};
+  if (dato_registrado === undefined || dato_registrado === '') dato_registrado = null;
 
+  const estado = calcularEstado(indicador, dato_registrado);
   const universidadId = req.user.universidad_id;
 
   const existente = db.prepare(
@@ -70,7 +68,7 @@ router.put('/:id/valor', requireAuth, requireRole('responsable'), (req, res) => 
     `).run(universidadId, indicador.id, dato_registrado, estado, req.user.id);
   }
 
-  res.json({ mensaje: 'Información guardada.' });
+  res.json({ mensaje: 'Información guardada.', estado });
 });
 
 export default router;

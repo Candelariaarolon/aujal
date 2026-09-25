@@ -274,10 +274,10 @@ select, input[type="text"], input[type="email"], input[type="password"] {
 .col-codigo { font-weight: 700; white-space: nowrap; }
 .col-unidad { color: var(--ink-500); white-space: nowrap; }
 .col-dato input { width: 160px; }
-.col-estado select { min-width: 150px; }
 .ind-nombre { font-weight: 600; }
 .ind-descripcion { color: var(--ink-500); font-size: 12px; margin-top: 2px; }
 .ind-formula { color: var(--ink-300); font-size: 11.5px; margin-top: 2px; }
+.ind-sin-criterio { color: var(--ink-300); font-size: 11px; font-style: italic; margin-top: 4px; max-width: 160px; }
 .tag-ausjal {
   display: inline-block; margin-left: 6px; font-size: 9.5px; font-weight: 700;
   background: var(--green-100); color: var(--green-700); padding: 1px 6px; border-radius: 999px; vertical-align: middle;
